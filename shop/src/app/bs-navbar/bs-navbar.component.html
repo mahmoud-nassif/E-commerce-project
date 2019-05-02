@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+  <a class="navbar-brand" routerLink="/">Shop</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="shopping-cart">Shopping-Cart <span class="badge badge-warning badge-pill">{{getCounter()}}</span></a>
+      </li>
+      <li ngbDropdown class="nav-item dropdown">
+        <a ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">user name</a>
+        <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
+          <a *ngIf="!auth.isLoggedIn()" class="dropdown-item" routerLink="login">login</a>
+          <a *ngIf="auth.isLoggedIn()" class="dropdown-item" routerLink="my/orders">My Orders</a>
+          <a *ngIf="auth.isLoggedIn() && auth.isAdmin()" class="dropdown-item" routerLink="admin/products">Manage Products</a>
+          <a *ngIf="auth.isLoggedIn()" class="dropdown-item" routerLink="admin/orders">Manage Orders</a>
+          <a *ngIf="auth.isLoggedIn()" class="dropdown-item" style="cursor: pointer;" (click)="logout()">Log Out</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>

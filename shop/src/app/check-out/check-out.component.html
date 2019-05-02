@@ -1,0 +1,13 @@
+<form #f="ngForm" (ngSubmit)="saveOrder(f.value)">
+  <div class="form-group" style="width:450px;">
+    <label for="name">name</label>
+    <input #name="ngModel" ngModel name="name" id="name" type="text" class="form-control" required>
+    <div class="alert alert-danger" *ngIf="name.touched && name.invalid">name is required</div>
+  </div>
+  <div class="form-group" style="width:450px;">
+    <label for="address">address</label>
+    <input #address="ngModel" ngModel name="address" id="address" type="text" class="form-control" required>
+    <div class="alert alert-danger" *ngIf="address.touched && address.invalid">address is required</div>
+  </div>
+  <button [disabled]="f.invalid" class="btn btn-primary" style="width:200px;">save order</button>
+  </form>

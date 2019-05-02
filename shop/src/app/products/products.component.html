@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="col-3">
+   <div class="list-group sticky-top">
+     <a 
+     class="list-group-item list-group-item-action"
+     [class.active]="!cid"
+     routerLink="/products">all categories</a>
+     <a *ngFor="let category of categories"
+         routerLink="/products"
+         [queryParams]="{category:category._id,name:category.name}"
+         class="list-group-item list-group-item-action"
+         [class.active]="cid===category._id">{{category.name}}</a>
+   </div>
+  </div>
+  <div class="col-9">
+    <div class="row">
+      <ng-container *ngFor="let product of filteredProductsPerCategory;let i=index">
+        <div class="col">
+          <div class="card" style="width:15rem;">
+            <img [src]="product.imageUrl"  class="card-img-top">
+            <div class="card-body">
+              <h4 class="card-title">{{product.title}}</h4>
+              <p class="card-text">{{product.price|currency:'USD':symbol}}</p>
+            </div>
+            <div class="card-footer">
+              <button *ngIf="getQuantity(product)===0;else updateQuantity"
+                (click)="addToCart(product)" class="btn btn-primary btn-block">add to cart
+              </button>
+              <ng-template #updateQuantity>
+                <div class="row no-gutters">
+                  <div class="col-2">
+                    <button (click)="removeFromCart(product)" class="btn btn-success btn-block">-</button>
+                  </div>
+                  <div class="col text-center">
+                      {{getQuantity(product)}} in cart
+                  </div>
+                  <div class="col-2">
+                      <button (click)="addToCart(product)" class="btn btn-success btn-block">+</button>
+                    </div>
+                </div>
+              </ng-template>
+
+            </div>
+          </div>
+        </div>
+        <div *ngIf="(i+1)%2===0" class="w-100"></div>
+      </ng-container>
+    </div>
+  </div>
+</div>
+
+
+
+
+

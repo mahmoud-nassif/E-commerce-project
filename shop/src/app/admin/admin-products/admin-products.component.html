@@ -1,0 +1,23 @@
+<p>
+ <a routerLink="/admin/products/new" class="btn btn-primary">new product</a>
+</p>
+<p>
+ <input #ref (keyup)="filter(ref.value)" type="text" class="form-control" placeholder="search...">
+</p>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>title</th>
+            <th>price</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of filteredProducts">
+            <td>{{product.title}}</td>
+            <td>{{product.price | currency:'USD':"symbol"}}</td>
+            <td><a [routerLink]="['/admin/products',product._id]" class="btn btn-primary">edit</a></td>
+        </tr>
+    </tbody>
+</table>

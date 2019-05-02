@@ -1,0 +1,12 @@
+.list-group-item:hover{
+    cursor: pointer;
+}
+.card-footer{
+    padding: 0%;
+}
+.card{
+    margin-bottom: 30px;
+}
+.sticky-top{
+    top: 70px;
+}

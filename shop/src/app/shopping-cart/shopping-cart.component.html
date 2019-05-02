@@ -1,0 +1,30 @@
+<h1>your shopping cart</h1>
+<ng-container *ngIf="cart">
+  <p>you have {{cartItemsCounter}} items in your cart
+  <button *ngIf="cart.items"
+   (click)="clearCart()" class="btn btn-danger btn-sm">clear cart</button>
+  </p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>product</th>
+        <th>quantity</th>
+        <th>price</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="ids">
+      <tr *ngFor="let id of ids">
+        <td>{{cart.items[id].product.title}}</td>
+        <td>{{cart.items[id].quantity}}</td>
+        <td>{{cart.items[id].product.price * cart.items[id].quantity |currency:'USD':symbol}}</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <th></th>
+      <th></th>
+      <th>{{totalPrice |currency:'USD':symbol}}</th>
+    </tfoot>
+  </table>
+  <button *ngIf="cart.items" (click)="checkOut()" class="btn btn-warning btn-sm">check out</button>
+</ng-container>
+

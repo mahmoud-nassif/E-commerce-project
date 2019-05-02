@@ -1,0 +1,25 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>userId</th>
+      <th>shipping to</th>
+      <th>shipping <address></address></th>
+      <th>date of order</th>
+      <th>total price</th>
+      <th>total quantity</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="orders">
+    <tr *ngFor="let order of orders">
+      <td>{{order.userId}}</td>
+      <td>{{order.shipping.name}}</td>
+      <td>{{order.shipping.address}}</td>
+      <td>{{order.dateCreated}}</td>
+      <td>{{order.totalPrice}}</td>
+      <td>{{order.totalQuantity}}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
